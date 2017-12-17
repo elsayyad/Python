@@ -1,5 +1,5 @@
 # Wiki Web Crawler.py
-A web crawler using python, to web crawl wikipedia's pages for first link, trying to see under which root article it will land. Edit
-Add topics
+A python WebCrawler that crawls a random wikipedia page and open the first link. Then on that page it chooses the first link in the main body of the article text and it keeps going. There is a common saying that if you kept clicking on the first link you will land to the 'Philosophy' page as it's the mother of all descendants topics. This script tries to automate it using web crawling.
+
 # Bike Share Analysis.ipynb
-Projects Implemented in Python.
+Over the past decade, bicycle-sharing systems have been growing in number and popularity in cities across the world. Bicycle-sharing systems allow users to rent bicycles for short trips, typically 30 minutes or less. Thanks to the rise in information technologies, it is easy for a user of the system to access a dock within the system to unlock or return bicycles. These technologies also provide a wealth of data that can be used to explore how these bike-sharing systems are used. I used Python to clean the data, compute descriptive statistics, and create basic visualizations of the distribution of data.
