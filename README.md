@@ -8,3 +8,7 @@ Over the past decade, bicycle-sharing systems have been growing in number and po
 
 The aim of the project is to investigate a dataset using Python along with external libraries and tools such as Anacondas, Pandas, NumPy and Matplotlib.
 This data set contains information about 10,000 movies collected from The Movie Database (TMDb), including user ratings and revenue, while lacking profit which will be created. The Dataset features the movie name, vote score, vote count, genre, director, cast, revenue and budget along with other information.
+
+# Data Wrangling.ipynb
+
+Real-world data problems as it rarely comes clean and structured. The aim of the project is to adhere and go through these issues, which will involve three phases of gathering data from different sources, assessing data quality and tidiness and finally cleaning them. The project will introduce practices like web scrapping via external tools and APIs such as tweepy and downloading files programmatically
