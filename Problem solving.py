@@ -1,3 +1,36 @@
+## Codility ##
+
+Write a function:
+def solution(A)
+that, given an array A of N integers, returns the smallest positive integer (greater than 0) that does not occur in A.
+
+For example, given A = [1, 3, 6, 4, 1, 2], the function should return 5.
+
+Given A = [1, 2, 3], the function should return 4.
+Given A = [−1, −3], the function should return 1.
+
+Write an efficient algorithm for the following assumptions:
+
+N is an integer within the range [1..100,000];
+each element of array A is an integer within the range [−1,000,000..1,000,000].
+
+def solution(A):
+    A = [int(i) for i in A] # convert items to int
+    A = sorted(set(A)) # convert list to sorted set
+    if max(A) > 0 :
+        for i in range(0, len(A)-1):
+            #print(A[i])
+            if (A[i+1] - A[i] > 1) :
+                return int(A[i]+1)
+
+        return int(max(A)+1)
+
+        #return int(max(A) + 1)
+    elif max(A) <= 0 :
+        #return int(max(A) + abs(max(A)) + 1)
+        return int(1)
+
+#===============================================================================
 ## Write a function ##
 We add a Leap Day on February 29, almost every four years. The leap day is an extra, or intercalary day and we add it to the shortest month of the year, February.
 In the Gregorian calendar three criteria must be taken into account to identify leap years:
@@ -239,3 +272,50 @@ if __name__ == '__main__':
     fptr.close()
 
 #===============================================================================
+## Word frequency count ##
+
+# Enter your code here. Read input from STDIN. Print output to STDOUT
+
+l={}
+for i in range(int(input())):
+    x=input()
+    if x not in l:
+        l[x]=1
+    else:
+        l[x]=l[x]+1
+print(len(l))
+for i in l:
+    print(l[i],end=" ")
+
+# Another solution order dict #
+
+from collections import Counter, OrderedDict
+class OrderedCounter(Counter, OrderedDict):
+    pass
+d = OrderedCounter(input() for _ in range(int(input())))
+print(len(d))
+print(*d.values())
+#===============================================================================
+## two diemnsional array ##
+Write a Python program which takes two digits m (row) and n (column) as input and generates a two-dimensional array.
+The element value in the i-th row and j-th column of the array should be i*j.
+Note :
+i = 0,1.., m-1
+j = 0,1, n-1.
+Input
+Input number of rows: 3
+Input number of columns: 4
+Output
+[[0, 0, 0, 0], [0, 1, 2, 3], [0, 2, 4, 6]]
+
+
+rows = int(input("Enter number of rows: "))
+columns = int(input("Enter number of columns: "))
+
+l = [[0 for col in range(columns)] for row in range(rows)]
+# i.e 3 rows & 4 columns [[0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
+
+for i in range(rows):
+    for j in range(columns):
+        l[i][j] = i*j
+print(l)
