@@ -106,8 +106,32 @@ if __name__ == '__main__':
 second_largest(arr)
 
 #===============================================================================
-## Nested Lists ##
-Find the second lowest number in a nested list composed of name and score.
+
+## Second smallest ##
+
+def second_smallest(numbers):
+    first, second = float('inf'), float('inf')
+    for x in numbers:
+        # If current element is smaller than first then
+        # update both first and second
+        if x < first:
+            second = first
+            first = x
+
+        # If arr[i] is in between first and second then
+        # update second
+        elif (x < second and x != first):
+            second = x
+
+    return second
+print(second_smallest([1, 2, -8, -2, 0]))
+print(second_smallest([0,1,2,3]))
+print(second_smallest([-3,-2,-1]))
+
+
+#===============================================================================
+## Second smallest in Nested Lists ##
+Find the second samllest number in a nested list composed of name and score.
 
 if __name__ == '__main__':
 
@@ -130,9 +154,9 @@ if __name__ == '__main__':
 
 #===============================================================================
 #===============================================================================
-#===========#
+#-#=======#-#
 ## Strings ##
-#===========#
+#-#=======#-#
 
 ## Swap Case ##
 
@@ -208,6 +232,31 @@ if __name__ == '__main__':
     count = count_substring(string, sub_string)
     print(count)
 #===============================================================================
+## alpha / digit counter ##
+
+# Write a Python program that accepts a string and calculate the number of digits and letters
+# Sample Data : "Python 3.2"
+# Expected Output :
+# Letters 6
+# Digits 2
+
+string = input("Enter string: ")
+def alpha_digit_calc(string):
+    alpha_cnt = 0
+    digit_cnt = 0
+    for char in string:
+        if char.isalpha():
+            alpha_cnt+=1
+        elif char.isdigit():
+            digit_cnt+=1
+        else:
+            pass
+    return "Letters count is {}, Digit count is {}".format(alpha_cnt, digit_cnt)
+
+print(alpha_digit_calc(string))
+
+#===============================================================================
+
 ## String Validators ##
 
 In the first line, print True if s has any alphanumeric characters. Otherwise, print False.
@@ -295,8 +344,45 @@ class OrderedCounter(Counter, OrderedDict):
 d = OrderedCounter(input() for _ in range(int(input())))
 print(len(d))
 print(*d.values())
+
+## Frequency of numbers ##
+
+import collections
+my_list = [10,10,10,10,20,20,20,20,40,40,50,50,30]
+print("Original List : ",my_list)
+ctr = collections.Counter(my_list)
+print("Frequency of the elements in the List : ",ctr)
+
 #===============================================================================
+## Subtract the Product and Sum of Digits of an Integer ##
+
+Given an integer number n, return the difference between the product of its digits and the sum of its digits.
+
+Input: n = 234
+Output: 15
+Explanation:
+Product of digits = 2 * 3 * 4 = 24
+Sum of digits = 2 + 3 + 4 = 9
+Result = 24 - 9 = 15
+
+class Solution:
+    def subtractProductAndSum(self, n: int) -> int:
+        n = str(n)
+        product= 1
+        sum = 0
+        for i in n.strip():
+            sum += int(i)
+            product *= int(i)
+        return product - sum
+
+
+#===============================================================================
+
+#-#========================#-#
+## Conditional flow & Loops ##
+#-#========================#-#
 ## two diemnsional array ##
+
 Write a Python program which takes two digits m (row) and n (column) as input and generates a two-dimensional array.
 The element value in the i-th row and j-th column of the array should be i*j.
 Note :
@@ -308,7 +394,6 @@ Input number of columns: 4
 Output
 [[0, 0, 0, 0], [0, 1, 2, 3], [0, 2, 4, 6]]
 
-
 rows = int(input("Enter number of rows: "))
 columns = int(input("Enter number of columns: "))
 
@@ -319,3 +404,214 @@ for i in range(rows):
     for j in range(columns):
         l[i][j] = i*j
 print(l)
+
+#===============================================================================
+## Pyramid loop ##
+
+# Write a Python program to construct the following pattern, using a nested loop number.
+# 1
+# 22
+# 333
+# 4444
+# 55555
+# 666666
+# 7777777
+# 88888888
+# 999999999
+
+n  = int(input("Enter a number: "))
+
+
+for i in range(1,n+1):
+    for j in range(i):
+        print(i, end="")
+    print("\t")
+
+## Another solution ##
+
+for i in range(1,n+1):
+    print(str(i) * i)
+#===============================================================================
+## Asterisk pattern ##
+
+#  Write a Python program to construct the following pattern, using a nested for loop.
+# *
+# * *
+# * * *
+# * * * *
+# * * * * *
+# * * * *
+# * * *
+# * *
+# *
+
+from math import ceil
+n = 5
+
+for i in range(1,n+1):
+    for j in range(i):
+        print("*",end=" ")
+    print("\t")
+for i in range(n,0,-1):
+    for j in range(i):
+        print("*",end=" ")
+    print("\t")
+
+#===============================================================================
+#===============================================================================
+#-#=====#-#
+## Lists ##
+#-#=====#-#
+
+## listToString ##
+# Convert a list of characters into a string
+# Input ['a', 'b', 'c', 'd']
+# Output abcd
+s = ['a', 'b', 'c', 'd']
+str1 = ''.join(s)
+print(str1)
+
+#===============================================================================
+## Subquery probe ##
+
+def is_Sublist(l, s):
+    sub_set = False
+    if s == []:
+        sub_set = True
+    elif s == l:
+        sub_set = True
+    elif len(s) > len(l):
+        sub_set = False
+
+    else:
+        for i in range(len(l)):
+            if l[i] == s[0]:
+                n = 1
+                while (n < len(s)) and (l[i+n] == s[n]):
+                    n += 1
+
+                if n == len(s):
+                    sub_set = True
+
+    return sub_set
+
+a = [2,4,3,5,7]
+b = [4,3]
+c = [3,7]
+print(is_Sublist(a, b))
+print(is_Sublist(a, c))
+
+#===============================================================================
+## common items in a list ##
+
+Write a Python program to find common items from two lists.
+input
+color1 = "Red", "Green", "Orange", "White"
+color2 = "Black", "Green", "White", "Pink"
+output
+{'Green', 'White'}
+
+color1 = "Red", "Green", "Orange", "White"
+color2 = "Black", "Green", "White", "Pink"
+
+def intersection(l1,l2):
+    result = []
+    for item in l1:
+        if item in l2:
+            result.append(item)
+    return result
+
+print(intersection(color1,color2))
+
+# Another solution
+
+print(set(color1) & set(color2))
+
+# For difference
+
+#===============================================================================
+##  Replace Elements with Greatest Element on Right Side ##
+
+Given an array arr, replace every element in that array with the greatest element among the elements to its right, and replace the last element with -1.
+After doing so, return the array.
+
+Input: arr = [17,18,5,4,6,1]
+Output: [18,6,6,6,1,-1]
+
+arr: [17,18,5,4,6,1]
+it1: [18,18,5,4,6,1]
+it2: [18,6,5,4,6,1]
+it3: [18,6,6,4,6,1]
+it4: [18,6,6,6,1,1]
+it6: [18,6,6,6,1,-1]
+
+def replaceElements(arr: List[int]) -> List[int]:
+    for i in range(0,len(arr)-1):
+        max_no = -float("Inf")
+        for j in range(i+1,len(arr)-1):
+            if arr[j] > arr[j+1] and arr[j] > max_no:
+                max_no = arr[j]
+        if i < len(arr)-2:
+            arr[i] = max_no
+        else:
+            arr[i] = arr[i+1]
+            break
+    arr[-1] = -1
+    return arr
+#===============================================================================
+
+#===============================================================================
+#-#==========#-#
+## Dictionary ##
+#-#==========#-#
+
+## Key dictionary ##
+
+# Check if a given key already exists in a dictionary
+# input
+# d = {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}
+# is_key_present(5)
+# is_key_present(9)
+# output
+# Key is present in the dictionary
+# Key is not present in the dictionary
+
+d = {1: 10, 2: 20, 3: 30, 4: 40, 5: 50, 6: 60}
+
+def is_key_presenet(k):
+        if k in d.keys():
+            print("Key {} is presnt in the dictionary".format(k))
+        else:
+            print("key {} is not present in the dictionary".format(k))
+
+is_key_presenet(5)
+is_key_presenet(9)
+
+#===============================================================================
+## Sort dictionary values asc or desc ##
+
+# import operator
+d = {1: 2, 3: 4, 4: 3, 2: 1, 0: 0}
+# print('Original dictionary : ',d)
+# sorted_d = sorted(d.items(), key=operator.itemgetter(0))
+# print('Dictionary in ascending order by value : ',sorted_d)
+# sorted_d = sorted(d.items(), key=operator.itemgetter(0),reverse=True)
+# print('Dictionary in descending order by value : ',sorted_d)
+
+def sort_dict_values(d, asc = True):
+    l = []
+    for k,v in d.items():
+        t = k,v
+        l.append(t)
+        if asc == True:
+            l = sorted(l, reverse=False)
+        else:
+            l = sorted(l, reverse=True)
+    print(l)
+
+sort_dict_values(d, asc=False)
+#===============================================================================
+
+#===============================================================================
+
+#===============================================================================
